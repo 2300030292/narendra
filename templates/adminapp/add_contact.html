@@ -1,0 +1,11 @@
+<!-- templates/contacts/add_contact.html -->
+<h1>Add Contact</h1>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <label for="email_to">Send to Email:</label>
+    <input type="email" name="email_to" id="email_to">
+    <button type="submit" name="send_email" value="true">Save and Send</button>
+    <button type="submit">Save</button>
+</form>
+<a href="{% url 'contact_list' %}">Back to Contact List</a>

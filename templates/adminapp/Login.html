@@ -1,0 +1,79 @@
+{% extends 'Navbar/Projectnavbar.html' %}
+{% load static %}
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <style>
+     body {
+    background-color: #EEEEEE;
+}
+.navbar {
+    background-color: white !important; /* Ensure the navbar is white */
+}
+ .nav-link:hover {
+    text-decoration: underline; /* Ensure underline on hover */
+}
+ .navbar-brand {
+    margin-left: 90px; /* Adjust this value to increase or decrease the spacing */
+}
+.navname {
+    margin-left: 20px;
+}
+    .form-container {
+        width: 400px !important;
+        background-color: white;
+        padding: 2.5rem;
+        border-radius: 4px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    }
+    .form-container img {
+        display: block;
+        margin: 0 auto 2.5rem;
+    }
+    .form-control {
+height: 50px;
+padding: 0.75rem 1.25rem;
+  margin-bottom: 2rem;
+}
+    </style>
+</head>
+
+<body>
+
+    {% block body %}
+    <div class="container d-flex justify-content-center align-items-center mt-5">
+       <form method="POST" action="{% url 'login' %}" class="w-100" style="max-width: 400px;">
+    {% csrf_token %}
+    {% if messages %}
+    <ul>
+        {% for message in messages %}
+        <li>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+<h2 align="center">LOGIN</h2>
+    <!-- Username input -->
+    <div data-mdb-input-init class="form-outline mb-4">
+        <input type="text" id="username" name="username" class="form-control" required />
+        <label class="form-label" for="username">Username</label>
+    </div>
+
+    <!-- Password input -->
+    <div data-mdb-input-init class="form-outline mb-4">
+        <input type="password" id="password" name="password" class="form-control" required />
+        <label class="form-label" for="password">Password</label>
+    </div>
+
+    <!-- Submit button -->
+    <button type="submit" class="btn btn-primary btn-block mb-4">Sign in</button>
+</form>
+
+    </div>
+    {% endblock %}
+
+</body>
+
+</html>
